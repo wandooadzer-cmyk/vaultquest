@@ -7,9 +7,9 @@
     "node": "^20 || ^22 || ^24"
   },
   "scripts": {
-    "dev": "tsx watch src/server.ts",
-    "build": "prisma generate && tsc -p tsconfig.json",
-    "start": "node dist/server.js",
+    "dev": "node init && tsx watch src/server.ts",
+    "build": "node init && prisma generate && tsc -p tsconfig.json",
+    "start": "node init && node dist/server.js",
     "lint": "eslint \"src/**/*.ts\" \"tests/**/*.ts\"",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -19,6 +19,7 @@
     "db:setup": "prisma migrate dev && prisma db seed"
   },
   "dependencies": {
+    "@fastify/rate-limit": "^11.0.0",
     "@prisma/client": "^5.22.0",
     "fastify": "^4.28.1",
     "fastify-plugin": "^4.5.1",
